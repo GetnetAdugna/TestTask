@@ -1,0 +1,274 @@
+// Variables
+$sidebar-width: 280px;
+$content-width: 600px;
+$profile-width: 340px;
+$card-border-radius: 16px;
+$primary-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$hover-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+
+.page-wrapper {
+  background-color: #f7f9fa;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  max-width: 1280px;
+  margin: 86px auto 0;
+  gap: 32px;
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: $card-border-radius;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: $primary-shadow;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $hover-shadow;
+  }
+
+  &.sticky {
+    position: sticky;
+    top: 100px;
+    background-color: #fff;
+    z-index: 10;
+  }
+}
+
+.section-title {
+  color: #666;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.sidebar {
+  width: $sidebar-width;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: fit-content;
+  position: relative;
+}
+
+.main-content {
+  width: $content-width;
+  border-radius: 12px;
+  margin: 0;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    padding: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+.profile-section {
+  width: $profile-width;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  position: relative;
+}
+
+.status-pill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  &.ongoing {
+    background-color: #e3f2fd;
+    color: #1976d2;
+
+    &::before {
+      background-color: #1976d2;
+    }
+  }
+
+  &.complete {
+    background-color: #f5f5f5;
+    color: #666;
+
+    &::before {
+      background-color: #666;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 16px;
+    margin-top: 64px;
+  }
+
+  .sidebar,
+  .profile-section {
+    display: none;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+}
+
+.mobile-menu {
+  width: 280px;
+  padding: 16px;
+
+  .menu-header {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mobile-menu-item {
+    padding: 12px 24px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    &.active {
+      background-color: #f0f0f0;
+    }
+  }
+
+  .mobile-menu-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 16px;
+  }
+
+  .mobile-action-icons {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 24px;
+
+    .MuiIconButton-root {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 24px;
+  max-width: 1600px;
+  margin: 24px auto;
+  padding: 84px 24px 24px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    padding: 74px 0 80px;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.side-content {
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+
+  &[data-status="ONGOING"] {
+    background-color: #e3f2fd;
+    color: #1976d2;
+
+    &::before {
+      background-color: #1976d2;
+    }
+  }
+
+  &[data-status="COMPLETE"] {
+    background-color: #f5f5f5;
+    color: #666;
+
+    &::before {
+      background-color: #666;
+    }
+  }
+
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+}
+
+.sidebar-list-item {
+  padding: 12px 0;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+}
+
+.sidebar-profile-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.sidebar-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.comment-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 12px 16px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+
+  @media (min-width: 901px) {
+    position: relative;
+    box-shadow: none;
+    padding: 16px 0;
+  }
+}
